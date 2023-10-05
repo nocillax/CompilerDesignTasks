@@ -1,3 +1,5 @@
+//Determine if the string is an identifier or not, if not state why. (example User is an identifier but Use(r is not; reason special character)
+
 #include <iostream>
 #include <string.h>
 using namespace std;
