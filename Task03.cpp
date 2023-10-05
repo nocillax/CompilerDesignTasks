@@ -1,3 +1,5 @@
+//Determine if the user input is a number or not
+
 #include <iostream>
 #include <string.h>
 using namespace std;
