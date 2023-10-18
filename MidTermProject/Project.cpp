@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <set>
-#include <unordered_set>
 #include <algorithm>
 using namespace std;
 
@@ -109,7 +108,7 @@ int main(){
 
     // Check Keywords
     set<string> key;
-    unordered_set<string> keywords = {
+    set<string> keywords = {
         "if", "else", "switch", "case", "default",
         "for", "while", "do", "break", "continue", "return",
         "int", "char", "float", "double", "string", "bool", "void", "auto", "const",
