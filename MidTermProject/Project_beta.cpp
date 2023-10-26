@@ -35,15 +35,38 @@ bool isConstant(const string& word) {
     for (char c : word) {
         if (isdigit(c)) {
             hasDigit = true;
-        } else if (c == '"' || c == '\'') {
+        } else if (c == '"') {
             hasQuotes = !hasQuotes;
         } else {
-            return false; // Constants can only contain digits and quotes.
+            return false; // Constants can only contain digits and balanced quotes.
         }
     }
 
     return hasDigit || hasQuotes;
 }
+
+bool isIdentifier(const string& word) {
+    if (word.empty()) return false;
+
+    // Check if the word is a valid function name
+    // A function name must start with a letter
+    if (!((word[0] >= 'a' && word[0] <= 'z') ||
+          (word[0] >= 'A' && word[0] <= 'Z'))) {
+        return false;
+    }
+
+    // Check the rest of the characters for letters or underscores
+    for (char c : word) {
+        if (!((c >= 'a' && c <= 'z') ||
+              (c >= 'A' && c <= 'Z') ||
+              (c == '_'))) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 
 int main() {
     string text;
@@ -90,6 +113,8 @@ int main() {
                 lineCategories["Punctuation"].push_back(word);
             } else if (isConstant(word)) {
                 lineCategories["Constants"].push_back(word);
+            } else if (isIdentifier(word)) {
+            lineCategories["Identifiers"].push_back(word);
             }
         }
 
